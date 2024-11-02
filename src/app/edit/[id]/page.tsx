@@ -82,6 +82,7 @@ const EditBookPage = () => {
                 ...values,
                 publicationYear: parseInt(values.publicationYear, 10)
             };
+            console.log("🚀 ~ EditBookPage ~ bookData:", bookData)
 
             await axios.put(
                 `${URL}/api/books/${params.id}`,
@@ -89,8 +90,9 @@ const EditBookPage = () => {
                 { withCredentials: true }
             );
 
+            
             toast.success('Book updated successfully!');
-            router.push('/books');
+            router.push('/');
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 if (error.response?.status === 400 || error.response?.status === 409) {
