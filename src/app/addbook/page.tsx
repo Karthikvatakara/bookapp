@@ -44,18 +44,14 @@ const BookForm: React.FC = () => {
               ...values,
               publicationYear: parseInt(values.publicationYear, 10)
             };
-            console.log("🚀 ~ bookData:", bookData)
 
-        
             const response = await axios.post(`${URL}/api/books`, bookData, { withCredentials: true });
 
-            console.log("🚀 ~ response:", response)
-            // Success handling
             toast.success('Book added successfully!');
-            resetForm();
-            setResetImage(true);
-            // router.push("/");
-            setTimeout(() => setResetImage(false),100); 
+            router.push("/");
+            // resetForm();
+            // setResetImage(true);
+            // setTimeout(() => setResetImage(false),100); 
         } catch (error) {
             if(axios.isAxiosError(error)) {
               if(error.response?.status === 400 || error.response?.status === 409 ) {

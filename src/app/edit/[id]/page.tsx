@@ -33,7 +33,6 @@ const EditBookPage = () => {
                 const response = await axios.get(`${URL}/api/books/${params.id}`, {
                     withCredentials: true
                 });
-                console.log("🚀 ~ fetchBook ~ response:", response)
                 setBook(response.data?.data);
             } catch (error) {
                 console.error('Error fetching book:', error);
@@ -82,7 +81,6 @@ const EditBookPage = () => {
                 ...values,
                 publicationYear: parseInt(values.publicationYear, 10)
             };
-            console.log("🚀 ~ EditBookPage ~ bookData:", bookData)
 
             await axios.put(
                 `${URL}/api/books/${params.id}`,
@@ -205,6 +203,7 @@ const EditBookPage = () => {
                             <Field
                                 type="text"
                                 name="isbn"
+                                disabled={true} // or readOnly={true}
                                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                                 placeholder="Enter ISBN"
                             />

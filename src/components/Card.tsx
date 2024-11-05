@@ -17,10 +17,13 @@ const Card: React.FC<CardProps> = ({ book, onDelete, onEdit }) => {
 
 
   const handleDelete = () => {
+    
     if (onDelete) {
-      onDelete(book._id.toString());
+      onDelete(book.id.toString());
+    } else {
+      console.error('Invalid book ID provided for deletion');
     }
-  }
+  };
 
   const handleEdit = () => {
     if (onEdit) {
