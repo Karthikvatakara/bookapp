@@ -1,4 +1,4 @@
-// app/books/edit/[id]/page.tsx
+
 "use client"
 import React, { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
@@ -24,7 +24,7 @@ const EditBookPage = () => {
     const router = useRouter();
     const [book, setBook] = useState<Book | null>(null);
     const [loading, setLoading] = useState(true);
-    const [resetImage, setResetImage] = useState(false);
+    // const [resetImage, setResetImage] = useState(false);
 
     // Fetch book details when component mounts
     useEffect(() => {
@@ -132,7 +132,7 @@ const EditBookPage = () => {
                                     }
                                 }}
                                 initialValue={values.thumbnail}
-                                reset={resetImage}
+                                // reset={resetImage}
                             />
                             <ErrorMessage
                                 name="thumbnail"

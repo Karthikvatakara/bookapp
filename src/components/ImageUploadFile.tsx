@@ -7,13 +7,13 @@ import ClipLoader from "react-spinners/ClipLoader";
 interface CustomSingleFileInputProps {
   onChange: (file: File | string | null) => void;
   initialValue?: string;
-  reset?: boolean;
+  // reset?: boolean;
 }
 
 const CustomSingleFileImage: React.FC<CustomSingleFileInputProps> = ({
   onChange,
   initialValue,
-  reset
+  // reset
 }) => {
   const [previewUrl, setPreviewUrl] = useState<string | null>(initialValue || null);
   const [isDragging, setIsDragging] = useState(false);
@@ -22,7 +22,7 @@ const CustomSingleFileImage: React.FC<CustomSingleFileInputProps> = ({
 
   useEffect(() => {
     setPreviewUrl(null);
-  },[reset]);
+  },[]);
   
   useEffect(() => {
     if (initialValue) {

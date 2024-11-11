@@ -1,11 +1,10 @@
 "use client"
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import CustomSingleFileImage from '@/components/ImageUploadFile';
 import toast from 'react-hot-toast';
 import axios from 'axios';
-import ImageUpload from '@/lib/imageUpload'; 
-import { Book } from '@/types/Book';
+
 import { URL } from '@/utils/constants';
 import { BookValidationSchema } from '@/schemas/BookValidationSchema';
 import { useRouter } from 'next/navigation';
@@ -21,7 +20,7 @@ interface BookFormValues {
 }
 
 const BookForm: React.FC = () => {
-      const [ resetImage, setResetImage ] = useState(false);
+    //   const [ resetImage, setResetImage ] = useState(false);
       const router = useRouter();
 
     const initialValues: BookFormValues = {
@@ -101,7 +100,7 @@ const BookForm: React.FC = () => {
                                     }
                                 }}
                                 initialValue={values.thumbnail}
-                                reset ={resetImage}
+                                // reset ={resetImage}
                             />
                             <ErrorMessage 
                                 name="thumbnail" 

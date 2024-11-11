@@ -19,7 +19,7 @@ function HeaderSection() {
     }
   return (
     <div className='grid lg:grid-cols-12  md:grid-cols-12 grid-cols-1' data-aos="fade-left ">
-        <div className="lg:col-span-8 md:col-span-8 col-span-1 flex justify-center items-center pt-9">
+        <div className="lg:col-span-8 md:col-span-12 col-span-1 flex justify-center items-center pt-9">
             <div className="lg:space-y-4  md:space-y-2 lg:text-5xl md:text-3xl text-xl lg:p-0 md:p-2 p-4">
             <h1 className='font-bold  text-darkBlue'>
             {/* <TypeWriterAnimation text='unlock Your Potential With' delay={100}/> */}
@@ -29,7 +29,7 @@ function HeaderSection() {
                 transformative learning experiences. Empower yourself with diverse courses,<br /> connect with experts, and unlock your potential. Embrace the future of education—your <br /> journey to success begins here!</p>
             </div>
         </div>
-        <div className="md:col-span-4 lg:col-span-4 col-span-1 pt-9" >
+        <div className=" md:col-span-12 md:items-center lg:col-span-4 col-span-1 pt-9" >
             <img src="/ui/homePage.jpg" alt="" />
         </div>
         <div className="col-span-12 flex pt-7 pe-6 justify-end items-end ">

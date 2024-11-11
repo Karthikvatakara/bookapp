@@ -45,7 +45,7 @@ function CardSection() {
     useEffect(() => {
         getData();
         
-        // Cleanup function
+        
         return () => {
             debouncedSearch.cancel();
         };
@@ -68,16 +68,14 @@ function CardSection() {
                 return;
             }
 
-            setIsLoading(true);
+            // setIsLoading(true);
             await axios.delete(`${URL}/api/books/${id}`, { withCredentials: true });
             setBookData(prevBooks => prevBooks.filter(book => book.id !== id));
             toast.success("Book deleted successfully");
         } catch (error) {
             console.error('Error deleting book:', error);
             toast.error('Failed to delete book');
-        } finally {
-            setIsLoading(false);
-        }
+        } 
     }
 
     const handleEdit = (book: Book) => {
