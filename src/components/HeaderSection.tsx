@@ -34,8 +34,8 @@ function HeaderSection() {
         <Image 
             src="/ui/homePage.jpg" 
             alt="Home page"
-            width={350}  // specify the width you want
-            height={300} // specify the height you want
+            width={350}  
+            height={300} 
             priority={false}
             quality={75}
         />

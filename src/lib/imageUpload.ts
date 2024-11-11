@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const ImageUpload = async (image: File) => {
-    const baseUrl = process.env.NEXT_PUBLIC_URL;
+
     const preset_key = process.env.NEXT_PUBLIC_PRESET_KEY;
     const cloud_name = process.env.NEXT_PUBLIC_CLD_USER_NAME;
     const formData = new FormData();

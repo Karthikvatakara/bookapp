@@ -101,11 +101,7 @@ const CustomSingleFileImage: React.FC<CustomSingleFileInputProps> = ({
       {previewUrl ? (
         <div className="mt-4 lg:mt-0 relative">
           <div className="bg-white p-2 h-52 rounded-lg shadow-lg mb-2">
-            {/* <img
-              src={previewUrl}
-              alt="Uploaded thumbnail"
-              className="object-contain w-full h-full rounded"
-            /> */}
+          
            <Image
                 src={previewUrl}
                 alt="Uploaded thumbnail"
