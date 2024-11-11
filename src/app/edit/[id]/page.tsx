@@ -2,7 +2,7 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage , FormikHelpers } from 'formik';
 import CustomSingleFileImage from '@/components/ImageUploadFile';
 import toast from 'react-hot-toast';
 import axios from 'axios';
@@ -74,7 +74,7 @@ const EditBookPage = () => {
     };
     const handleSubmit = async (
         values: BookFormValues,
-        { setSubmitting }: any
+        { setSubmitting }:FormikHelpers<BookFormValues>
     ) => {
         try {
             const bookData = {

@@ -3,6 +3,7 @@ import { ImageUploadIcon } from "./ImageUploadIcon";
 import ImageUpload from "@/lib/imageUpload";
 import toast from "react-hot-toast";
 import ClipLoader from "react-spinners/ClipLoader";
+import Image from "next/image";
 
 interface CustomSingleFileInputProps {
   onChange: (file: File | string | null) => void;
@@ -100,11 +101,20 @@ const CustomSingleFileImage: React.FC<CustomSingleFileInputProps> = ({
       {previewUrl ? (
         <div className="mt-4 lg:mt-0 relative">
           <div className="bg-white p-2 h-52 rounded-lg shadow-lg mb-2">
-            <img
+            {/* <img
               src={previewUrl}
               alt="Uploaded thumbnail"
               className="object-contain w-full h-full rounded"
-            />
+            /> */}
+           <Image
+                src={previewUrl}
+                alt="Uploaded thumbnail"
+                fill
+                sizes="(max-width: 768px) 100vw, 300px"
+                className="object-contain rounded"
+                priority={false}
+                quality={75}
+              />
             <p className="truncate text-xs mt-3">Uploaded thumbnail</p>
           </div>
           {loading && (

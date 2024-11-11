@@ -1,12 +1,13 @@
 "use client";
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from './Card';
 import axios from 'axios';
 import { URL } from '@/utils/constants';
 import { Book } from '@/types/Book';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
-import debounce from 'lodash/debounce';
+// import debounce from 'lodash/debounce';
+import { useDebounce } from '@/hooks/useDebounce';
 
 function CardSection() {
     const [bookData, setBookData] = useState<Book[]>([]);
@@ -14,6 +15,9 @@ function CardSection() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const router = useRouter();
+    const inputRef = React.useRef<HTMLInputElement>(null)
+
+    const debouncedSearchQuery = useDebounce(searchQuery,500)
 
     const getData = async(query: string = '') => {
         try {
@@ -34,27 +38,14 @@ function CardSection() {
         }
     }
 
-    // Debounced search function
-    const debouncedSearch = useCallback(
-        debounce((query: string) => {
-            getData(query);
-        }, 500),
-        []
-    );
-
-    useEffect(() => {
-        getData();
-        
-        
-        return () => {
-            debouncedSearch.cancel();
-        };
-    }, []);
+  useEffect(() => {
+    getData(debouncedSearchQuery);
+  },[debouncedSearchQuery]);
+ 
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         const query = e.target.value;
         setSearchQuery(query);
-        debouncedSearch(query);
     }
 
     const handleDelete = async(id: string) => {
@@ -90,6 +81,8 @@ function CardSection() {
         <div className="container mx-auto p-4">
             <div className="mb-6">
                 <input 
+                    ref={inputRef}
+                    key="search-input"
                     type="text" 
                     placeholder="Search books..." 
                     value={searchQuery}

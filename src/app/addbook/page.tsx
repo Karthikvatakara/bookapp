@@ -1,6 +1,5 @@
 "use client"
-import  { useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
 import CustomSingleFileImage from '@/components/ImageUploadFile';
 import toast from 'react-hot-toast';
 import axios from 'axios';
@@ -35,7 +34,7 @@ const BookForm: React.FC = () => {
   
     const handleSubmit = async (
         values: BookFormValues, 
-        { setSubmitting, resetForm }: any
+        { setSubmitting }: FormikHelpers<BookFormValues>
     ) => {
         try {
             // Prepare data for submission
@@ -46,6 +45,7 @@ const BookForm: React.FC = () => {
 
             const response = await axios.post(`${URL}/api/books`, bookData, { withCredentials: true });
 
+            console.log("🚀 ~ response:", response)
             toast.success('Book added successfully!');
             router.push("/");
             // resetForm();

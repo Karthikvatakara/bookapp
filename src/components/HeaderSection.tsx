@@ -2,6 +2,7 @@
 import AOS from "aos";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 function HeaderSection() {
     const router = useRouter();
@@ -30,7 +31,14 @@ function HeaderSection() {
             </div>
         </div>
         <div className=" md:col-span-12 md:items-center lg:col-span-4 col-span-1 pt-9" >
-            <img src="/ui/homePage.jpg" alt="" />
+        <Image 
+            src="/ui/homePage.jpg" 
+            alt="Home page"
+            width={350}  // specify the width you want
+            height={300} // specify the height you want
+            priority={false}
+            quality={75}
+        />
         </div>
         <div className="col-span-12 flex pt-7 pe-6 justify-end items-end ">
             <button className=" p-2 bg-yellow-300 font-bold text-xl hover:bg-yellow-400 text-blue-600  rounded-lg hover:text-blue-900" onClick={handlAddBook}>Add Book</button>

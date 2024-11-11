@@ -5,6 +5,7 @@ import { FaEdit } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 import { FaBarcode } from "react-icons/fa";
 import { Book } from '@/types/Book';
+import Image from 'next/image'; 
 
 interface CardProps {
   book: Book;
@@ -33,12 +34,16 @@ const Card: React.FC<CardProps> = ({ book, onDelete, onEdit }) => {
   return (
     <div className="h-fit mt-14 flex items-center justify-center">
       <div className="bg-white text-grey-700 w-80 flex flex-col shadow-xl rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300">
-        {/* Image Section */}
+      
         <div className="relative w-full h-48">
-          <img 
+        <Image 
             src={book?.thumbnail || 'https://via.placeholder.com/320x192'}
-            className="w-full h-full object-cover"
-            alt={book?.title} 
+            alt={book?.title || 'Book cover'} 
+            fill
+            sizes="(max-width: 320px) 100vw, 320px"
+            className="object-cover"
+            priority={false}
+            quality={75}
           />
           <div className="absolute top-0 right-0 bg-blue-500 text-white px-3 py-1 m-2 rounded-full text-sm">
             <span>YEAR: {book?.publicationYear}</span>
