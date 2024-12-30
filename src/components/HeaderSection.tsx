@@ -4,7 +4,12 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-function HeaderSection() {
+interface HeaderSectionProps {
+    searchQuery: string;
+    onSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+function HeaderSection({ searchQuery, onSearch}: HeaderSectionProps) {
     const router = useRouter();
 
     useEffect(() => {
@@ -43,6 +48,20 @@ function HeaderSection() {
         <div className="col-span-12 flex pt-7 pe-6 justify-end items-end ">
             <button className=" p-2 bg-yellow-300 font-bold text-xl hover:bg-yellow-400 text-blue-600  rounded-lg hover:text-blue-900" onClick={handlAddBook}>Add Book</button>
         </div>
+
+        <div className="col-span-12">
+                <div className="relative max-w-4xl mx-auto">
+                    <input
+                        type="text"
+                        placeholder="Search books..."
+                        value={searchQuery}
+                        onChange={onSearch}
+                        className="border border-gray-300 rounded-lg p-4 w-full 
+                            focus:outline-none focus:ring-4 focus:ring-blue-500
+                            transition duration-200 text-lg shadow-md"
+                    />
+                </div>
+            </div>
         </div>
   )
 }

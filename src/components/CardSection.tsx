@@ -9,13 +9,15 @@ import { useRouter } from 'next/navigation';
 // import debounce from 'lodash/debounce';
 import { useDebounce } from '@/hooks/useDebounce';
 
-function CardSection() {
+interface CardSectionProps {
+    searchQuery : string;
+}
+
+function CardSection({searchQuery}:CardSectionProps) {
     const [bookData, setBookData] = useState<Book[]>([]);
-    const [searchQuery, setSearchQuery] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const router = useRouter();
-    const inputRef = React.useRef<HTMLInputElement>(null)
 
     const debouncedSearchQuery = useDebounce(searchQuery,500)
 
@@ -39,14 +41,13 @@ function CardSection() {
     }
 
   useEffect(() => {
+    if (debouncedSearchQuery !== searchQuery) {
+        return;
+    }
     getData(debouncedSearchQuery);
   },[debouncedSearchQuery]);
  
 
-    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const query = e.target.value;
-        setSearchQuery(query);
-    }
 
     const handleDelete = async(id: string) => {
         try {
@@ -79,20 +80,6 @@ function CardSection() {
 
     return (
         <div className="container mx-auto p-4">
-            <div className="mb-6">
-                <input 
-                    ref={inputRef}
-                    key="search-input"
-                    type="text" 
-                    placeholder="Search books..." 
-                    value={searchQuery}
-                    onChange={handleSearch}
-                    className="border border-gray-300 rounded-md p-2 w-full 
-                             focus:outline-none focus:ring-2 focus:ring-blue-500
-                             transition duration-200"
-                    disabled={isLoading}
-                />
-            </div>
 
             {error && (
                 <div className="text-red-500 mb-4">

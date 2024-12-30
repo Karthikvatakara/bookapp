@@ -59,7 +59,7 @@ const CustomSingleFileImage: React.FC<CustomSingleFileInputProps> = ({
   };
 
   const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]; // Optional chaining
+    const file = e.target.files?.[0]; 
     if (file) {
       await handleFileUpload(file);
     }
@@ -95,8 +95,8 @@ const CustomSingleFileImage: React.FC<CustomSingleFileInputProps> = ({
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
-      role="button" // Make the drop area accessible
-      aria-label="Drag and drop an image here, or click to upload" // Add an aria label
+      role="button" 
+      aria-label="Drag and drop an image here, or click to upload" 
     >
       {previewUrl ? (
         <div className="mt-4 lg:mt-0 relative">

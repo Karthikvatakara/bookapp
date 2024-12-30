@@ -14,6 +14,8 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ book, onDelete, onEdit }) => {
+console.log("🚀 ~ book:book in card", book)
+
 
 
   const handleDelete = () => {
